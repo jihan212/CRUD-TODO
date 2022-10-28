@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Input = () => {
+const AddTodo = () => {
 	return (
 		<div>
 			<form className='bg-white p-1 m-1 rounded-md flex justify-between'>
 				<input
-					className='bg-slate-200 p-1 m-1 rounded-md w-3/6'
+					className=' p-1 m-1 w-5/6'
 					placeholder='What do you want to do?'
 				/>
 				<button
@@ -19,4 +19,4 @@ const Input = () => {
 	);
 };
 
-export default Input;
+export default AddTodo;
