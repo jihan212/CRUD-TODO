@@ -15,12 +15,20 @@ const Todos = () => {
 		});
 	}, []);
 
-	const addTodo = (Title, id) => {
+	const addTodo = (Title) => {
 		const newTodo = [
 			...todo,
 			{ Title, status: false, id: Math.floor(Math.random() * 1000) },
 		];
 		setTodo(newTodo);
+	};
+
+	const deleteTodo = (id) => {
+		const removeTodo = todo.filter((todo) => {
+			return todo.id !== id;
+		});
+		setTodo(removeTodo);
+		console.log(todo)
 	};
 
 	return (
@@ -35,6 +43,8 @@ const Todos = () => {
 						<TodoList
 							key={todo.id}
 							todo={todo}
+							id={todo.id}
+							deleteTodo={deleteTodo}
 						></TodoList>
 					))}
 				</div>

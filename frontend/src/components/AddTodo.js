@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const AddTodo = ({addTodo}) => {
+const AddTodo = ({ addTodo }) => {
 	const [input, setInput] = useState(``);
 
 	const handleSubmit = (e) => {
@@ -11,10 +12,15 @@ const AddTodo = ({addTodo}) => {
 		addTodo(input);
 		setInput('');
 
-		// props.onSubmit({
-		// 	id: Math.floor(Math.random() * 1000),
-		// 	text: input,
-		// });
+		// const url = `https://cors-anywhere.herokuapp.com/http://localhost:5000/api`;
+
+		// fetch(url, {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'content-type': 'application/json',
+		// 	},
+		// 	body: JSON.stringify(input),
+		// }).then((response) => console.log('Server side response', response));
 	};
 
 	const handleChange = (e) => {
