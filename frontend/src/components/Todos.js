@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../index.css';
 import axios from 'axios';
-import { AiFillDelete } from 'react-icons/ai';
+import TodoList from './TodoList';
+import AddTodo from './AddTodo';
 
 const URL = 'http://localhost:5000/api/todos';
 
@@ -14,19 +15,30 @@ const Todos = () => {
 		});
 	}, []);
 
+	const addTodo = (Title, id) => {
+		const newTodo = [
+			...todo,
+			{ Title, status: false, id: Math.floor(Math.random() * 1000) },
+		];
+		setTodo(newTodo);
+	};
+
 	return (
 		<>
-			{todo?.map((todo) => (
-				<div
-					key={todo.id}
-					className='bg-teal-50 p-2 m-2 rounded-lg text-lg flex justify-between'
-				>
-					<p className='text-left'>{todo.Title}</p>
-					<button className='text-red-600 text-2xl'>
-						<AiFillDelete />
-					</button>
+			<div className='flex h-screen'>
+				<div className='bg-slate-800 shadow-lg shadow-slate-500/50 p-4 m-2 rounded-lg w-1/2 m-auto'>
+					<h1 className='text-2xl text-white p-1 m-1'>
+						Add New ToDo
+					</h1>
+					<AddTodo addTodo={addTodo} />
+					{todo?.map((todo) => (
+						<TodoList
+							key={todo.id}
+							todo={todo}
+						></TodoList>
+					))}
 				</div>
-			))}
+			</div>
 		</>
 	);
 };
